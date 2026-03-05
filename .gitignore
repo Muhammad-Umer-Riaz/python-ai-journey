@@ -205,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Remove the following line if you wish to include speakers.csv in version control
+automate-the-boring-stuff/chapter-09-text-pattern-matching-with-regular-expression/speakers.csv
