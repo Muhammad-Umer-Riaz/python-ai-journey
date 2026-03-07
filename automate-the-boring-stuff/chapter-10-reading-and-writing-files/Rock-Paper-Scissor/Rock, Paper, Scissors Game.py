@@ -1,11 +1,14 @@
 # Rock, Paper, Scissors with Saved Games
 
-import random, sys, shelve, datetime
+import random, sys, shelve, datetime, os
 
 print('ROCK, PAPER, SCISSORS')
 
 # These variables keep track of the number of wins, losses, and ties.
-with shelve.open('rps_stats') as stats:
+script_dir = os.path.dirname(os.path.abspath(__file__))
+stats_file = os.path.join(script_dir, 'rps_stats')
+
+with shelve.open(stats_file) as stats:
     wins = stats.get('wins', 0)
     losses = stats.get('losses', 0)
     ties = stats.get('ties', 0)
@@ -18,7 +21,7 @@ while True:  # The main game loop
         player_move = input('>')
         if player_move == 'q':
              # CHANGED: Save stats before quitting instead of just sys.exit()
-            with shelve.open('rps_stats') as stats:
+            with shelve.open(stats_file) as stats:
                 stats['wins'] = wins
                 stats['losses'] = losses
                 stats['ties'] = ties
